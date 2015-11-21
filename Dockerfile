@@ -28,8 +28,12 @@ RUN mkdir /opt && git config --system http.sslverify false
 RUN cd /opt && git clone https://github.com/node-red/node-red.git
 RUN cd /opt/node-red && npm install
 RUN cd /opt/node-red && npm install -g grunt-cli
+RUN cd /opt/node-red && npm install auth0-lock --save
+RUN cd /opt/node-red && npm install express-jwt --save
 RUN cd /opt/node-red && grunt build
 EXPOSE 1880
+EXPOSE 443
+EXPOSE 80
 RUN cd /opt/node-red && npm install node-red-contrib-freeboard
 RUN cd /opt/node-red/node_modules/node-red-contrib-freeboard/node_modules/freeboard/plugins/ && git clone https://github.com/Freeboard/plugins.git
 RUN cd /opt/node-red/node_modules/node-red-contrib-freeboard/node_modules/freeboard/plugins/plugins && mv * ../
