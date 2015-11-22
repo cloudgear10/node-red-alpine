@@ -34,6 +34,7 @@ RUN cd /opt/node-red && grunt build
 EXPOSE 1880
 EXPOSE 443
 EXPOSE 80
+RUN cd /opt && mkdir /opt/node-redstatic
 RUN cd /opt/node-red && npm install node-red-contrib-freeboard
 RUN cd /opt/node-red/node_modules/node-red-contrib-freeboard/node_modules/freeboard/plugins/ && git clone https://github.com/Freeboard/plugins.git
 RUN cd /opt/node-red/node_modules/node-red-contrib-freeboard/node_modules/freeboard/plugins/plugins && mv * ../
